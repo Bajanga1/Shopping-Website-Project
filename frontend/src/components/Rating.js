@@ -1,5 +1,6 @@
 import React from 'react'
 
+//Adds the star Icons
 function Rating({value, text, color}) {
     return (
         <div className="rating">
