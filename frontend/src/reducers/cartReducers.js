@@ -1,7 +1,7 @@
 import { CART_ADD_ITEM, CART_REMOVE_ITEM } from '../constants/cartConstants'
 
 
-
+//payload is the id of the item
 export const cartReducer = (state = { cartItems: [] }, action) => {
     switch (action.type) {
         // checks to see if item is already in cart
