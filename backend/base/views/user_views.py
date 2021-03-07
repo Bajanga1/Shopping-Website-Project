@@ -54,13 +54,15 @@ def registerUser(request):
 def updateUserProfile(request):
     user = request.user   
     serializer = UserSerializerWithToken(user, many=False)
-    data = request.data
     
+    data = request.data  
     user.first_name = data['name']
     user.username = data['email']
-    user.email = data['email']
-    
-    
+    user.email = data['email']   
+    if data['password'] != '':
+        user.password = make_password(data['password'])
+        
+    user.save()
     
     return Response(serializer.data)
 
