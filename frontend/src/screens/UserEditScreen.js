@@ -5,78 +5,86 @@ import { useDispatch, useSelector } from 'react-redux'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
 import FormContainer from '../components/FormContainer'
-import { getUserDetails } from '../actions/userActions'
+import { getUserDetails, updateUser } from '../actions/userActions'
+import { USER_UPDATE_RESET } from '../constants/userConstants'
 
-function EditUserScreen({ match, history }) {
+function UserEditScreen({ match, history }) {
     const userId = match.params.id
 
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
-    const [isAdmin, setAdmin] = useState(false)
-    
+    const [isAdmin, setIsAdmin] = useState(false)
+
 
     const dispatch = useDispatch()
 
     const userDetails = useSelector(state => state.userDetails)
     const { error, loading, user } = userDetails
 
+    const userUpdate = useSelector(state => state.userUpdate)
+    const { error: errorUpdate, loading: loadingUpdate, success: successUpdate } = userUpdate
+
     useEffect(() => {
-        
-    }, [])
+        if (successUpdate) {
+            dispatch({ type: USER_UPDATE_RESET })
+            history.push('/admin/userlist')
+        } else {
+            if (!user.name || user._id !== Number(userId)) {
+                dispatch(getUserDetails(userId))
+            } else {
+                setName(user.name)
+                setEmail(user.email)
+                setIsAdmin(user.isAdmin)
+            }
+        }
+    }, [user, userId, successUpdate, history])
 
     const submitHandler = (event) => {
         event.preventDefault()
+        dispatch(updateUser({ _id: user._id, name, email, isAdmin }))
 
     }
 
     return (
-        <FormContainer>
-            <h1>Sign In</h1>
-            {message && <Message variant='danger'>{message}</Message>}
-            {error && <Message variant='danger'>{error}</Message>}
-            {loading && <Loader />}
-            <Form onSubmit={submitHandler}>
+        <div>
+            <Link to='/admin/userlist'>Go Back</Link>
 
-                <Form.Group controlId='name'>
-                    <Form.Label>
-                        Name
+            <FormContainer>
+                <h1>Edit User</h1>
+
+                {loadingUpdate && <Loader/>}
+                {errorUpdate && <Message variant='danger'>{errorUpdate}</Message>}
+
+                {loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : (
+                    <Form onSubmit={submitHandler}>
+
+                        <Form.Group controlId='name'>
+                            <Form.Label>
+                                Name
                     </Form.Label>
-                    <Form.Control required type='name' placeholder='Enter name' value={name} onChange={(event) => setName(event.target.value)}></Form.Control>
-                </Form.Group>
+                            <Form.Control type='name' placeholder='Enter name' value={name} onChange={(event) => setName(event.target.value)}></Form.Control>
+                        </Form.Group>
 
-                <Form.Group controlId='email'>
-                    <Form.Label>
-                        Email Address
+                        <Form.Group controlId='email'>
+                            <Form.Label>
+                                Email Address
                     </Form.Label>
-                    <Form.Control required type='email' placeholder='Enter Email' value={email} onChange={(event) => setEmail(event.target.value)}></Form.Control>
-                </Form.Group>
+                            <Form.Control type='email' placeholder='Enter Email' value={email} onChange={(event) => setEmail(event.target.value)}></Form.Control>
+                        </Form.Group>
 
-                <Form.Group controlId='password'>
-                    <Form.Label>
-                        Password
-                    </Form.Label>
-                    <Form.Control required type='password' placeholder='Enter Password' value={password} onChange={(event) => setPassword(event.target.value)}></Form.Control>
-                </Form.Group>
+                        <Form.Group controlId='isadmin'>
+                            <Form.Check type='checkbox' label='Is Admin' checked={isAdmin} onChange={(event) => isAdmin(event.target.checked)}></Form.Check>
+                        </Form.Group>
 
-                <Form.Group controlId='passwordConfirm'>
-                    <Form.Label>
-                        Confirm Password
-                    </Form.Label>
-                    <Form.Control required type='password' placeholder='Confirm Password' value={confirmPassword} onChange={(event) => setConfirmPassword(event.target.value)}></Form.Control>
-                </Form.Group>
+                        <Button type='submit' variant='primary'>Update</Button>
 
-                <Button type='submit' variant='primary'>Register</Button>
+                    </Form>
+                )}
 
-            </Form>
 
-            <Row className='py-3'>
-                <Col>
-                    Have an Account? <Link to={redirect ? `/login?redirect=${redirect}` : '/login'}>Sign In</Link>
-                </Col>
-            </Row>
-
-        </FormContainer>
+            </FormContainer>
+        </div>
     )
 }
 
-export default EditUserScreen
+export default UserEditScreen
