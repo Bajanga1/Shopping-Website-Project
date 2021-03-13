@@ -1,6 +1,7 @@
 import axios from 'axios'
 import {
 <<<<<<< HEAD
+<<<<<<< HEAD
     PRODUCT_LIST_REQUEST, PRODUCT_LIST_SUCCESS, PRODUCT_LIST_FAIL,PRODUCT_DETAILS_REQUEST, PRODUCT_DETAILS_SUCCESS, PRODUCT_DETAILS_FAIL
 =======
     PRODUCT_LIST_REQUEST,
@@ -32,6 +33,9 @@ import {
     PRODUCT_TOP_FAIL,
 
 >>>>>>> parent of c2cf0a0 (Revert "Going to merge my frontend files with my backend")
+=======
+    PRODUCT_LIST_REQUEST, PRODUCT_LIST_SUCCESS, PRODUCT_LIST_FAIL,PRODUCT_DETAILS_REQUEST, PRODUCT_DETAILS_SUCCESS, PRODUCT_DETAILS_FAIL
+>>>>>>> parent of 2abc26c (Creating Review functionality)
 } from '../constants/productConstants'
 
 
@@ -99,6 +103,7 @@ export const listProductDetails = (id) => async (dispatch) => { // dispatches ap
         })
 
     }
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 }
@@ -257,4 +262,6 @@ export const createProductReview = (productId, review) => async (dispatch, getSt
         })
     }
 >>>>>>> parent of c2cf0a0 (Revert "Going to merge my frontend files with my backend")
+=======
+>>>>>>> parent of 2abc26c (Creating Review functionality)
 }

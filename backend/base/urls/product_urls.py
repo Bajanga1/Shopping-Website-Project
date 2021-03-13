@@ -6,6 +6,7 @@ urlpatterns = [
   
     path('', views.getProducts, name='products'),
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     path('create/', views.createProduct, name='product-create'),
     path('upload/', views.uploadImage, name='image-upload'),
@@ -13,5 +14,7 @@ urlpatterns = [
     path('<str:pk>/reviews/', views.createProductReview, name='create-review'),
     path('top/', views.getTopProducts, name='top-products'),
 >>>>>>> parent of c2cf0a0 (Revert "Going to merge my frontend files with my backend")
+=======
+>>>>>>> parent of 2abc26c (Creating Review functionality)
     path('<str:pk>/', views.getProduct, name='product'),
 ]

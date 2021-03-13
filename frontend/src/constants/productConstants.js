@@ -6,6 +6,7 @@ export const PRODUCT_LIST_FAIL = 'PRODUCT_LIST_FAIL'
 export const PRODUCT_DETAILS_REQUEST = 'PRODUCT_DETAILS_REQUEST'
 export const PRODUCT_DETAILS_SUCCESS = 'PRODUCT_DETAILS_SUCCESS'
 <<<<<<< HEAD
+<<<<<<< HEAD
 export const PRODUCT_DETAILS_FAIL = 'PRODUCT_DETAILS_FAIL'
 =======
 export const PRODUCT_DETAILS_FAIL = 'PRODUCT_DETAILS_FAIL'
@@ -33,3 +34,6 @@ export const PRODUCT_TOP_REQUEST = 'PRODUCT_TOP_REQUEST'
 export const PRODUCT_TOP_SUCCESS = 'PRODUCT_TOP_SUCCESS'
 export const PRODUCT_TOP_FAIL = 'PRODUCT_TOP_FAIL'
 >>>>>>> parent of c2cf0a0 (Revert "Going to merge my frontend files with my backend")
+=======
+export const PRODUCT_DETAILS_FAIL = 'PRODUCT_DETAILS_FAIL'
+>>>>>>> parent of 2abc26c (Creating Review functionality)
