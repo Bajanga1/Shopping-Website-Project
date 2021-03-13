@@ -4,7 +4,6 @@ import { Table, Button, Row, Col } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
-import Paginate from '../components/Paginate'
 import { listProducts, deleteProduct, createProduct } from '../actions/productActions'
 import { PRODUCT_CREATE_RESET } from '../constants/productConstants'
 
@@ -13,7 +12,7 @@ function ProductListScreen({ history, match }) {
     const dispatch = useDispatch()
 
     const productList = useSelector(state => state.productList)
-    const { loading, error, products, page, pages } = productList
+    const { loading, error, products } = productList
 
     const productDelete = useSelector(state => state.productDelete)
     const { loading: loadingDelete, error: errorDelete, success: successDelete } = productDelete
@@ -24,7 +23,7 @@ function ProductListScreen({ history, match }) {
     const userLogin = useSelector(state => state.userLogin)
     const { userInfo } = userLogin
 
-    let keyword = history.location.search
+
 
     useEffect(() => {
         dispatch({ type: PRODUCT_CREATE_RESET })
@@ -34,11 +33,11 @@ function ProductListScreen({ history, match }) {
         }
         if (successCreate) {
             history.push(`/admin/product/${createdProduct._id}/edit`)
-        } else {
-            dispatch(listProducts(keyword))
+        }else{
+            dispatch(listProducts())
         }
 
-    }, [dispatch, history, userInfo, successDelete, successCreate, createdProduct, keyword])
+    }, [dispatch, history, userInfo, successDelete, successCreate, createdProduct])
 
     const deleteHandler = (id) => {
 
@@ -73,53 +72,50 @@ function ProductListScreen({ history, match }) {
             {loadingCreate && <Loader />}
             {errorCreate && <Message variant='danger'>{errorCreate}</Message>}
 
-
+            
             {loading
                 ? <Loader />
                 : error
                     ? <Message variant='danger'>{error}</Message>
                     : (
-                        <div>
-                            <Table striped bordered hover responsive className='table-sm'>
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>NAME</th>
-                                        <th>PRICE</th>
-                                        <th>CATEGORY</th>
-                                        <th>BRAND</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
+                        <Table striped bordered hover responsive className='table-sm'>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>NAME</th>
+                                    <th>PRICE</th>
+                                    <th>CATEGORY</th>
+                                    <th>BRAND</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
 
-                                <tbody>
-                                    {products.map(products => (
-                                        <tr key={products._id}>
-                                            <td>{products._id}</td>
-                                            <td>{products.name}</td>
-                                            <td>${products.price}</td>
-                                            <td>{products.category}</td>
-                                            <td>{products.brand}</td>
+                            <tbody>
+                                {products.map(products => (
+                                    <tr key={products._id}>
+                                        <td>{products._id}</td>
+                                        <td>{products.name}</td>
+                                        <td>${products.price}</td>
+                                        <td>{products.category}</td>
+                                        <td>{products.brand}</td>
 
-                                            <td>
-                                                <LinkContainer to={`/admin/product/${products._id}/edit`}>
-                                                    <Button variant='light' className='btn-sm'>
-                                                        <i className='fas fa-edit'></i>
-                                                    </Button>
-                                                </LinkContainer>
-
-                                                <Button variant='danger' className='btn-sm' onClick={() => deleteHandler(products._id)}>
-                                                    <i className='fas fa-trash'></i>
+                                        <td>
+                                            <LinkContainer to={`/admin/product/${products._id}/edit`}>
+                                                <Button variant='light' className='btn-sm'>
+                                                    <i className='fas fa-edit'></i>
                                                 </Button>
+                                            </LinkContainer>
 
-                                            </td>
-                                        </tr>
-                                    ))}
-                                </tbody>
+                                            <Button variant='danger' className='btn-sm' onClick={() => deleteHandler(products._id)}>
+                                                <i className='fas fa-trash'></i>
+                                            </Button>
 
-                            </Table>
-                            <Paginate pages={pages} page={page} isAdmin={true}  />
-                        </div>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+
+                        </Table>
                     )}
         </div>
     )
