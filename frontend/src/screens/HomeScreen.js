@@ -21,7 +21,7 @@ function HomeScreen({ history }) {
 
     return (
         <div>
-            {!keyword && <ProductCarousel />}
+            {/* {!keyword && <ProductCarousel />} */}
             
             <h1>Lastest Products</h1>
             {loading ? <Loader />

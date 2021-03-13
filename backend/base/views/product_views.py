@@ -48,20 +48,13 @@ def getTopProducts(request):
     return Response(serializer.data)
     
 
-
-
-
-
-
 @api_view(['GET'])
 def getProduct(request, pk):
     product = Product.objects.get(_id=pk)
     serializer = ProductSerializer(product, many=False)
 
     return Response(serializer.data)
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
+
 
 
 @api_view(['POST'])
@@ -161,6 +154,3 @@ def createProductReview(request, pk):
         product.save()
 
         return Response('Review Added')
->>>>>>> parent of c2cf0a0 (Revert "Going to merge my frontend files with my backend")
-=======
->>>>>>> parent of 2abc26c (Creating Review functionality)

@@ -134,7 +134,7 @@ function ProductScreen({ match, history }) {
                                 </Col>
                             </Row>
 
-                            <Row>
+                            {/* <Row>
                                 <Col md={6}>
                                     <h4>Reviews</h4>
                                     {product.reviews.length === 0 && <Message variant='info'>No Reviews</Message>}
@@ -188,7 +188,7 @@ function ProductScreen({ match, history }) {
                                         </ListGroup.Item>
                                     </ListGroup>
                                 </Col>
-                            </Row>
+                            </Row> */}
                         </div>
                     )
 

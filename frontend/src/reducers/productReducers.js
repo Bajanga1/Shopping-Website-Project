@@ -1,8 +1,5 @@
 import {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    PRODUCT_LIST_REQUEST, PRODUCT_LIST_SUCCESS, PRODUCT_LIST_FAIL, PRODUCT_DETAILS_REQUEST, PRODUCT_DETAILS_SUCCESS, PRODUCT_DETAILS_FAIL
-=======
+
     PRODUCT_LIST_REQUEST,
     PRODUCT_LIST_SUCCESS,
     PRODUCT_LIST_FAIL,
@@ -33,10 +30,7 @@ import {
     PRODUCT_TOP_REQUEST,
     PRODUCT_TOP_SUCCESS,
     PRODUCT_TOP_FAIL,
->>>>>>> parent of c2cf0a0 (Revert "Going to merge my frontend files with my backend")
-=======
-    PRODUCT_LIST_REQUEST, PRODUCT_LIST_SUCCESS, PRODUCT_LIST_FAIL, PRODUCT_DETAILS_REQUEST, PRODUCT_DETAILS_SUCCESS, PRODUCT_DETAILS_FAIL
->>>>>>> parent of 2abc26c (Creating Review functionality)
+
 } from '../constants/productConstants'
 
 //Sets product state to empty untill the the payload returns the data
@@ -75,9 +69,7 @@ export const productDetailsReducer = (state = { product: { reviews: [] } }, acti
         default:
             return state
     }
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
+
 }
 
 export const productDeleteReducer = (state = {}, action) => {
@@ -167,7 +159,5 @@ export const productTopRatedReducer = (state = {products:[]}, action) => {
         default:
             return state
     }
->>>>>>> parent of c2cf0a0 (Revert "Going to merge my frontend files with my backend")
-=======
->>>>>>> parent of 2abc26c (Creating Review functionality)
+
 }

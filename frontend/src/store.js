@@ -1,15 +1,7 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
-<<<<<<< HEAD
-<<<<<<< HEAD
-import { productListReducer, productDetailsReducer } from './reducers/productReducers'
-=======
-import { productListReducer, productDetailsReducer, productDeleteReducer, productCreateReducer, productUpdateReducer, productReviewCreateReducer, productTopRatedReducer} from './reducers/productReducers'
->>>>>>> parent of c2cf0a0 (Revert "Going to merge my frontend files with my backend")
-=======
-import { productListReducer, productDetailsReducer } from './reducers/productReducers'
->>>>>>> parent of 2abc26c (Creating Review functionality)
+import { productListReducer, productDetailsReducer, productDeleteReducer, productCreateReducer, productUpdateReducer, productReviewCreateReducer, } from './reducers/productReducers'
 import { cartReducer } from './reducers/cartReducers'
 import { userLoginReducer, userRegisterReducer, userDetailsReducer, userUpdateProfileReducer, userListReducer, userDeleteReducer } from './reducers/userReducers'
 import { orderCreateReducer, orderDetailsReducer, orderPayReducer, orderListMyReducer } from './reducers/orderReducers'
@@ -17,19 +9,15 @@ import { orderCreateReducer, orderDetailsReducer, orderPayReducer, orderListMyRe
 const reducer = combineReducers({
     productList: productListReducer,
     productDetails: productDetailsReducer,
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
+
     productDelete:productDeleteReducer,
     productCreate:productCreateReducer,
     productUpdate:productUpdateReducer,
     productReviewCreate:productReviewCreateReducer,
-    productTopRated:productTopRatedReducer,
+    // productTopRated:productTopRatedReducer,
+    cart:cartReducer,
     
->>>>>>> parent of c2cf0a0 (Revert "Going to merge my frontend files with my backend")
-=======
->>>>>>> parent of 2abc26c (Creating Review functionality)
-    cart: cartReducer,
+
 
     userLogin: userLoginReducer,
     userRegister: userRegisterReducer,

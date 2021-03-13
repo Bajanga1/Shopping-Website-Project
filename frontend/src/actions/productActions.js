@@ -1,12 +1,7 @@
 import axios from 'axios'
 import {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    PRODUCT_LIST_REQUEST, PRODUCT_LIST_SUCCESS, PRODUCT_LIST_FAIL,PRODUCT_DETAILS_REQUEST, PRODUCT_DETAILS_SUCCESS, PRODUCT_DETAILS_FAIL
-=======
-    PRODUCT_LIST_REQUEST,
-    PRODUCT_LIST_SUCCESS,
-    PRODUCT_LIST_FAIL,
+
+    PRODUCT_LIST_REQUEST, PRODUCT_LIST_SUCCESS, PRODUCT_LIST_FAIL,
 
     PRODUCT_DETAILS_REQUEST,
     PRODUCT_DETAILS_SUCCESS,
@@ -32,10 +27,6 @@ import {
     PRODUCT_TOP_SUCCESS,
     PRODUCT_TOP_FAIL,
 
->>>>>>> parent of c2cf0a0 (Revert "Going to merge my frontend files with my backend")
-=======
-    PRODUCT_LIST_REQUEST, PRODUCT_LIST_SUCCESS, PRODUCT_LIST_FAIL,PRODUCT_DETAILS_REQUEST, PRODUCT_DETAILS_SUCCESS, PRODUCT_DETAILS_FAIL
->>>>>>> parent of 2abc26c (Creating Review functionality)
 } from '../constants/productConstants'
 
 
@@ -61,27 +52,27 @@ export const listProducts = (keyword = '') => async (dispatch) => { // dispatche
     }
 }
 
-export const listTopProducts = () => async (dispatch) => { 
-    try {
-        dispatch({ type: PRODUCT_TOP_REQUEST })
+// export const listTopProducts = () => async (dispatch) => { 
+//     try {
+//         dispatch({ type: PRODUCT_TOP_REQUEST })
 
-        const { data } = await axios.get(`/api/products/top/`)
+//         const { data } = await axios.get(`/api/products/top/`)
 
-        dispatch({
-            type: PRODUCT_TOP_SUCCESS,
-            payload: data
-        })
+//         dispatch({
+//             type: PRODUCT_TOP_SUCCESS,
+//             payload: data
+//         })
 
-    } catch (error) {
-        dispatch({
-            type: PRODUCT_TOP_FAIL,
-            payload: error.response && error.response.data.detail
-                ? error.response.data.detail
-                : error.message,
-        })
+//     } catch (error) {
+//         dispatch({
+//             type: PRODUCT_TOP_FAIL,
+//             payload: error.response && error.response.data.detail
+//                 ? error.response.data.detail
+//                 : error.message,
+//         })
 
-    }
-}
+//     }
+// }
 
 export const listProductDetails = (id) => async (dispatch) => { // dispatches api call, sets state to success and returns requested products
     try {
@@ -103,9 +94,7 @@ export const listProductDetails = (id) => async (dispatch) => { // dispatches ap
         })
 
     }
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
+
 }
 
 export const deleteProduct = (id) => async (dispatch, getState) => {
@@ -261,7 +250,5 @@ export const createProductReview = (productId, review) => async (dispatch, getSt
                 : error.message,
         })
     }
->>>>>>> parent of c2cf0a0 (Revert "Going to merge my frontend files with my backend")
-=======
->>>>>>> parent of 2abc26c (Creating Review functionality)
+
 }
